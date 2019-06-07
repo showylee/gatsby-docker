@@ -1,0 +1,15 @@
+FROM node:12.3.1-alpine
+
+ARG EMAIL
+ARG NAME
+
+RUN set -x && \
+apk add --no-cache --virtual git && \
+npm install -g gatsby-cli && \
+git config --global user.email "${EMAIL}" && \
+git config --global user.name "${NAME}"
+
+WORKDIR /app
+
+ENTRYPOINT ["gatsby", "new"]
+CMD ["", ""]

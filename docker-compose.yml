@@ -1,0 +1,26 @@
+version: '3'
+services:
+  blog-init:
+    build:
+      context: .
+      dockerfile: Dockerfile-init
+      args:
+        - EMAIL=${EMAIL}
+        - NAME=${NAME}
+        - SRC=${SRC}
+        - STARTER=${STARTER}
+    volumes:
+      - ./src:/app
+    tty: true
+    stdin_open: true
+  blog-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    environment:
+      SRC:
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./src/${SRC}:/app
+    container_name: my-blog
