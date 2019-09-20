@@ -11,7 +11,7 @@ STARTER=[Gatsby starter repository url]
 *Init blog*
 
 ```
-docker-compose run blog-init   
+docker-compose run blog-init {DIR} {STARTAR URL} 
 ```
 
 *Start Developing*
